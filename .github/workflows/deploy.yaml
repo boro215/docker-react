@@ -13,7 +13,7 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build and test
-        run: docker build -t boro215/docker-react -f Dockerfile .
+        run: docker build -t boro215/docker-react .
       - name: Test
         run: docker run -e CI=true boro215/docker-react npm test
 
