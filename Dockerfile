@@ -2,7 +2,7 @@ FROM node:lts-alpine as builder
 WORKDIR '/app'
 COPY package.json .
 RUN npm install 
-RUN npm update --dev
+RUN npm update
 # Copy the package.json file first to install the dependencies
 # This is done to avoid re-installing the dependencies when the source code changes
 # Copy the rest of the files
