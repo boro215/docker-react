@@ -2,6 +2,7 @@ FROM node:lts-alpine as builder
 WORKDIR '/app'
 COPY package.json .
 RUN npm install && npm update
+RUN npm audit fix --force
 # Copy the rest of the files
 COPY . .
 RUN npm run build
