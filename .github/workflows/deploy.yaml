@@ -15,10 +15,12 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t boro215/docker-react .
+        run: |
+          docker build -t boro215/docker-react:latest .
 
       - name: Push Docker image
-        run: docker push boro215/docker-react
+        run: |
+          docker push boro215/docker-react:latest
 
       - name: Debug app directory existence
         run: docker run boro215/docker-react ls -ld /app
