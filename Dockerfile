@@ -5,5 +5,5 @@ RUN npm install
 RUN npm update
 COPY . .
 RUN npm run build
-RUN npm test -- --watchAll=false 
+RUN CI=true npm test
 #Dodano opcję, aby testy nie uruchamiały się w trybie watch
