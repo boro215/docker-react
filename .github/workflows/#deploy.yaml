@@ -15,17 +15,10 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: |
-          docker build -t boro215/docker-react:latest .
-
+        run: docker build -t boro215/docker-react:latest .
+          
       - name: Push Docker image
         run: docker push boro215/docker-react:latest
-
-      - name: Debug Docker image permissions
-        run: docker run boro215/docker-react ls -la /usr/share/nginx/html
-
-      #- name: Debug deploy directory
-      #  run: docker run boro215/docker-react ls -la /app/deploy
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
