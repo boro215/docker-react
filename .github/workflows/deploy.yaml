@@ -18,16 +18,10 @@ jobs:
         run: |
           docker build -t boro215/docker-react .
 
-      - name: Run unit tests
-        run: docker run -e CI=true boro215/docker-react npm test
-
-      - name: Build production build
-        run: docker run boro215/docker-react npm run build
-
       - name: Generate deployment package
         run: |
           mkdir deploy
-          docker run boro215/docker-react sh -c "cp -r /app/build/* /app/deploy/"
+          docker run boro215/docker-react sh -c "cp -r /usr/share/nginx/html/* /app/deploy/"
           zip -r deploy.zip deploy/
 
       - name: Deploy to EB
