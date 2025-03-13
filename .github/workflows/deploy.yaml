@@ -28,9 +28,8 @@ jobs:
       #  run: docker run boro215/docker-react ls -la /app/deploy
 
       - name: Generate deployment package
-        run: |
-          docker run boro215/docker-react sh -c "mkdir -p /app/deploy && rsync -a /usr/share/nginx/html/ /app/deploy/"
-          zip -r deploy.zip deploy/
+        run: zip -r deploy.zip . -x '*.git*'
+          
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
