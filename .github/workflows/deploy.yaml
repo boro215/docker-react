@@ -22,12 +22,6 @@ jobs:
         run: |
           docker push boro215/docker-react:latest
 
-      - name: Debug app directory existence
-        run: docker run boro215/docker-react ls -ld /app
-
-      - name: Debug app directory permissions
-        run: docker run boro215/docker-react ls -lad /app
-
       - name: Debug Docker image permissions
         run: docker run boro215/docker-react ls -la /usr/share/nginx/html
 
@@ -36,8 +30,7 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          mkdir deploy
-          docker run boro215/docker-react sh -c "rsync -a /usr/share/nginx/html/ /app/deploy/"
+          docker run boro215/docker-react sh -c "mkdir -p /app/deploy && rsync -a /usr/share/nginx/html/ /app/deploy/"
           zip -r deploy.zip deploy/
 
       - name: Deploy to EB
