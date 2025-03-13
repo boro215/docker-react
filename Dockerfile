@@ -2,7 +2,7 @@
 FROM node:lts-alpine as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --force
+RUN npm install --force
 COPY . .
 RUN npm run build
 RUN npm test -- --watchAll=false
