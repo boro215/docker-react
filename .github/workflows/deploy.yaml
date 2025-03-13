@@ -19,14 +19,13 @@ jobs:
           docker build -t boro215/docker-react:latest .
 
       - name: Push Docker image
-        run: |
-          docker push boro215/docker-react:latest
+        run: docker push boro215/docker-react:latest
 
       - name: Debug Docker image permissions
         run: docker run boro215/docker-react ls -la /usr/share/nginx/html
 
-      - name: Debug deploy directory
-        run: docker run boro215/docker-react ls -la /app/deploy
+      #- name: Debug deploy directory
+      #  run: docker run boro215/docker-react ls -la /app/deploy
 
       - name: Generate deployment package
         run: |
