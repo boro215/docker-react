@@ -1,7 +1,7 @@
 FROM node:lts-alpine as builder
-WORKDIR /app 
+WORKDIR '/usr/src/app'
 #Poprawiona linia
-COPY package*.json ./
+COPY package.json .
 RUN npm install
 COPY . .
 RUN npm run build
@@ -9,4 +9,4 @@ RUN npm run build
 
 FROM nginx:alpine
 EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app /usr/share/nginx/html
