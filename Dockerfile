@@ -5,8 +5,5 @@ RUN npm install
 RUN npm update
 COPY . .
 RUN npm run build
-RUN npm test # Dodano uruchamianie testów w etapie buildera
-
-FROM nginx
-EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+RUN npm test -- --watchAll=false 
+#Dodano opcję, aby testy nie uruchamiały się w trybie watch
