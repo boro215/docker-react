@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm install --force
 COPY . .
 RUN npm run build
-RUN npm test -- --watchAll=false
+RUN npm test
 
 # Etap 2: Serwowanie aplikacji za pomocą Nginx
 FROM nginx:alpine
