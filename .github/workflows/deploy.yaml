@@ -18,6 +18,9 @@ jobs:
         run: |
           docker build -t boro215/docker-react .
 
+      - name: Push Docker image
+        run: docker push boro215/docker-react
+
       - name: Generate deployment package
         run: |
           mkdir deploy
